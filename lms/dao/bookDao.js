@@ -1,7 +1,7 @@
 var db = require("./db");
 
 exports.getAllBooks = function(cb) {
-  db.query("select * from lms_node.book", function(err, result) {
+  db.query("select * from lms.book", function(err, result) {
     cb(err, result);
   });
 };
