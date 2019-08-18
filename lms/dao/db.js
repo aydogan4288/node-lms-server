@@ -1,10 +1,10 @@
 var mysql = require('mysql');
-
+var some = "rootroot";
 var connection = mysql.createConnection({
-    host     : '127.0.0.1',
+    host     : 'lms-rds.cmnn2qojb3cd.us-east-2.rds.amazonaws.com',
     user     : 'root',
-    password : 'root',
-    database : 'lms_node'
+    password : some,
+    database : 'lms-rds'
 });
 
 module.exports = connection;
