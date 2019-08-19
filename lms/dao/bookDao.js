@@ -8,7 +8,7 @@ exports.getAllBooks = function(cb) {
 //"SELECT * FROM lms_node.book WHERE book_id = ?"
 exports.getBookById = function(bookId, cb) {
   console.log("right before query");
-  db.query("SELECT * FROM lms_node.book WHERE book_id = ?", [bookId], function(
+  db.query("SELECT * FROM lms.book WHERE book_id = ?", [bookId], function(
     err,
     result
   ) {
@@ -21,7 +21,7 @@ exports.addBook = function(book, cb) {
     if (err) cb(err, null);
 
     db.query(
-      "insert into lms_node.book(title, author) values(?,?)",
+      "insert into lms.book(title, author) values(?,?)",
       [book.title, book.author],
       function(err, res) {
         if (err) {
@@ -41,7 +41,7 @@ exports.removeBook = function(bookId, cb) {
   db.beginTransaction(function(err) {
     if (err) cb(err, null);
 
-    db.query("delete from lms_node.book where book_id = ?", [bookId], function(
+    db.query("delete from lms.book where book_id = ?", [bookId], function(
       err,
       res
     ) {
@@ -62,7 +62,7 @@ exports.updateBook = function(book, cb) {
     if (err) cb(err, null);
 
     db.query(
-      "UPDATE lms_node.book SET title = ?, author = ? WHERE book_id =?",
+      "UPDATE lms.book SET title = ?, author = ? WHERE book_id =?",
       [book.title, book.author, book.book_id],
       function(err, res) {
         if (err) {
